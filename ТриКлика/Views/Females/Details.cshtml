@@ -1,0 +1,58 @@
+﻿@model ТриКлика.Models.Female
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Female</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.productName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productImageOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productImageOne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productImageTwo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productImageTwo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productImageThree)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productImageThree)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

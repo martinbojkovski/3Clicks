@@ -1,0 +1,78 @@
+﻿@model ТриКлика.Models.Male
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <div class="col-md-6 col-sm-6 col-xs-6" style="margin-bottom:8px">
+        <img style="height: 500px; width: 500px; margin: 10px;" src="@Model.productImageOne" />
+        @if (Model.productImageTwo != null)
+        {
+            <img style="height: 500px; width: 500px; margin: 10px;" src="@Model.productImageTwo" />
+        }
+        @if (Model.productImageThree != null)
+        {
+            <img style="height: 500px; width: 500px; margin: 10px;" src="@Model.productImageThree" />
+        }
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6 sticky">
+        <h2>@Html.DisplayFor(model => model.productName)</h2>
+        <h4>Maжи</h4>
+        <hr />
+        @if (Model.discountPrice != null && Model.productDescription == "Попуст")
+        {
+            <h3 style="color:red;font-weight:bold;margin-bottom:5px;"><span style="text-decoration:line-through;color:grey">@Model.productPrice</span>   @Model.discountPrice</h3>
+            <h4>Последни броеви</h4>
+        }
+        else
+        {
+            <h3 style="font-weight:bold;">@Model.productPrice</h3>
+            <h4>Достапно</h4>
+        }
+
+        <h4 style="font-weight:bold" for="size-select">Големина:</h4>
+        @if (Model.productCategory == "shoes")
+        {
+            <div class="select">
+                <select name="size-select">
+                    <option value="" disabled>--Изберете големина--</option>
+                    <option value="38">38 EU / 5,5 UK</option>
+                    <option value="39">39 EU / 6 UK</option>
+                    <option value="40">40 EU / 6.5 UK</option>
+                    <option value="41">41 EU / 7 UK</option>
+                    <option value="42">42 EU / 7,5 UK</option>
+                    <option value="43">43 EU / 8 UK</option>
+                </select>
+            </div>
+        }
+        else 
+        {
+            <div class="select">
+                <select name="size-select">
+                    <option value="" disabled>--Изберете големина--</option>
+                    <option value="S">Small</option>
+                    <option value="M">Medium</option>
+                    <option value="L">Large</option>
+                    <option value="XL">Extra Large</option>
+                    <option value="XXL">Double Extra Large</option>
+                </select>
+            </div>
+        }
+
+
+        <div class="button-shopping">
+            <button type="submit">Додади во кошничка</button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+

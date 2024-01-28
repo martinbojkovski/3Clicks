@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ТриКлика.Models.Female>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Женско катче</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@foreach (var item in Model)
+{
+
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+        <div class="thumbnail product-item" style="height:300px">
+            <a href="Females/Details/@item.ID">
+                <img class="img-responsive" title="Click to View Product detail"
+                     src="@item.productImageOne" />
+            </a>
+
+            <div class="caption">
+                <h5>@item.productName</h5>
+                @if (item.discountPrice != null)
+                {
+                    <p style="color:red;font-weight:bold;"><span style="text-decoration:line-through;color:grey">@item.productPrice</span>   @item.discountPrice</p>
+                    <p>Последни броеви</p>
+                    <div class="product-item-badge" style="background-color:red;">@item.productDescription</div>
+                }
+                else
+                {
+                    <p style="font-weight:bold;">@item.productPrice</p>
+                    <p>Достапно</p>
+                    <div class="product-item-badge">@item.productDescription</div>
+                }
+            </div>
+        </div>
+    </div>
+
+}

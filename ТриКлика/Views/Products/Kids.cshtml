@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ТриКлика.Models.Product>
+
+@{
+    ViewBag.Title = "Kids";
+}
+
+<h3 style="font-weight:bold;">Детско катче</h3>
+
+@foreach (var item in Model)
+{
+    if (item.productGender == "kids")
+    {
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+            <div class="thumbnail product-item" style="height:300px">
+
+                <a href="/Products/Details/@item.ID">
+                    <img class="img-responsive" title="Click to View Product detail"
+                         style="cursor:pointer;height:160px;width:100%"
+                         src="@item.productImageOne" />
+                </a>
+
+                <div class="caption">
+                    <h5>@item.productBrand - @item.productName</h5>
+                    @if (item.productDescription == "Попуст" && item.discountPrice != null)
+                    {
+                        <p style="color:red;font-weight:bold;"><span style="text-decoration:line-through;color:grey">@item.productPrice ден.</span>   @item.discountPrice ден.</p>
+                        <p>Последни броеви</p>
+                        <div class="product-item-badge" style="background-color:red;">@item.productDescription</div>
+                    }
+                    else if (item.discountPrice == null && item.productDescription == "Попуст")
+                    {
+                        @Html.Display(item.productDescription = "Популарно")
+                        <p style="font-weight:bold;">@item.productPrice ден.</p>
+                        <p>Достапно</p>
+
+                        <div class="product-item-badge">@item.productDescription</div>
+                    }
+                    else
+                    {
+                        <p style="font-weight:bold;">@item.productPrice ден.</p>
+                        <p>Достапно</p>
+
+                        <div class="product-item-badge">@item.productDescription</div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+}
+

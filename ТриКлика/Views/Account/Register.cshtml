@@ -1,0 +1,44 @@
+﻿@model ТриКлика.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div style="background-color: #2D2F36;padding: 150px;">
+        @Html.AntiForgeryToken()
+
+
+        <h3 style="font-weight:bold;color:white;text-align:center">Креирај кориснички профил</h3>
+        <hr style="width:50%" />
+
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group" style="display:flex;justify-content:center;">
+            <div class="col-md-5" style="width: 30%;">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+            </div>
+        </div>
+        <div class="form-group" style="display:flex;justify-content:center;">
+            <div class="col-md-5" style="width: 30%;">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+            </div>
+        </div>
+        <div class="form-group" style="display:flex;justify-content:center;">
+            <div class="col-md-5" style="width:30%;">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "confirmPassowrd" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-right: 15px;">
+            <div class="col-md-offset-2 col-md-10" style="display:flex;justify-content:center;">
+                <input style="background-color: darkred; font-weight: bold; color: white; border: 1px solid black;" type="submit" class="btn btn-default" value="Регистрирај се" />
+            </div>
+        </div>
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

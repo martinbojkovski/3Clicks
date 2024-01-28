@@ -1,0 +1,17 @@
+﻿@model ТриКлика.Models.RoleToUser
+@{
+    ViewBag.Title = "AddRole";
+}
+
+<h2>Add a Role</h2>
+@using (Html.BeginForm("AddRole", "Account"))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.mail)
+        @Html.TextBoxFor(model => model.mail, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(model => model.selectedRole, new SelectList(Model.roles), new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-default">Save</button>
+}

@@ -1,0 +1,59 @@
+﻿@using ТриКлика.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div>
+    <div >
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+            <div style="background-color: #2D2F36;padding: 150px;">
+                @Html.AntiForgeryToken()
+                <h3 style="font-weight:bold;color:white;text-align:center">Логирај Се И Започни Со Пазарење!</h3>
+                <hr style="width:50%" />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group" style="display:flex;justify-content:center;">
+                    <div class="col-md-10" style="width: 30%;">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group" style="display:flex;justify-content:center;">
+                    <div class="col-md-10" style="width: 30%;">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group" sstyle="margin-right:50px;">
+                    <div class="col-md-offset-2 col-md-7" style="display:flex;justify-content:center;">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe, new { @style = "color:white;" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="display:flex;justify-content:center;">
+                        <input style="background-color: darkred; font-weight: bold; color: white; border: 1px solid black;" type="submit" class="btn btn-default" value="Најави се" />
+                    </div>
+                </div>
+                <br />
+                <hr style="width:50%" />
+                <h4 style="text-align:center;color:white;font-weight:bold;">
+                    Немате кориснички профил? @Html.ActionLink("Регистрирај се", "Register", null, new { @style = "color:white;" })
+                </h4>
+                @* Enable this once you have account confirmation enabled for password reset functionality
+        <p>
+            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+        </p>*@
+            </div>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

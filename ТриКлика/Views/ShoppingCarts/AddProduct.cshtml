@@ -1,0 +1,55 @@
+﻿@model ТриКлика.Models.ProductToCart
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h2>Потврда на нарачка</h2>
+
+<hr />
+
+@using (Html.BeginForm("AddProduct", "ShoppingCarts"))
+{
+    <div class="form-group">
+        @Html.HiddenFor(model => model.productID)
+        @Html.HiddenFor(model => model.shoppingCartID)
+    </div>
+
+    <h2 style="text-align:center;font-weight:bold">Дали сте сигурни дека сакате да го купите овој производ ?</h2>
+    
+    <div style="margin-bottom: 8px; display: flex; justify-content: center;">
+        <div class="thumbnail product-item" style="height:300px;width:300px;">
+            <a href="/Products/Details/@Model.product.ID">
+                <img class="img-responsive" title="Click to View Product detail"
+                     style="cursor:pointer;height:160px;width:100%"
+                     src="@Model.product.productImageOne" />
+            </a>
+
+            <div class="caption">
+                <h5>@Model.product.productBrand - @Model.product.productName</h5>
+                @if (Model.product.productDescription == "Попуст" && Model.product.discountPrice != null)
+                {
+                    <p style="color:red;font-weight:bold;"><span style="text-decoration:line-through;color:grey">@Model.product.productPrice ден.</span>   @Model.product.discountPrice ден.</p>
+                    <p>Последни броеви</p>  
+                }
+                else if (Model.product.discountPrice == null && Model.product.productDescription == "Попуст")
+                {
+                    @Html.Display(Model.product.productDescription = "Популарно")
+                    <p style="font-weight:bold;">@Model.product.productPrice ден.</p>
+                    <p>Достапно</p>
+                }
+                else
+                {
+                    <p style="font-weight:bold;">@Model.product.productPrice ден.</p>
+                    <p>Достапно</p>
+
+                }
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        <button style="background-color: darkred; font-weight: bold; color: white; border: 1px solid black; margin: 5px;" type="submit" class="btn btn-default">Потврди</button>
+        <button style="background-color: darkred; font-weight: bold; color: white; border: 1px solid black; margin: 5px; " type="button" onclick="javascript:history.back()" class="btn btn-default">Одбиј</button>
+    </div>
+    
+}

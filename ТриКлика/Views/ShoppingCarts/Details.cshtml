@@ -1,0 +1,153 @@
+﻿@model ТриКлика.Models.ShoppingCart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Кошничка</h2>
+
+<hr />
+
+@{ int totalPrice = 0; }
+
+<table class="table" id="shoppingCart" style="box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);">
+    <thead style="background-color: darkred; text-transform: uppercase; letter-spacing: 0.03em;color:white;">
+        <tr>
+            <th>
+                <h5 style="font-weight: bold; text-align: center;">Слика</h5>
+            </th>
+            <th>
+                <h5 style="font-weight: bold; text-align: center;">Категорија</h5>
+            </th>
+            <th>
+                <h5 style="font-weight: bold; text-align: center;">Бренд</h5>
+            </th>
+            <th>
+                <h5 style="font-weight: bold; text-align: center;">Тип</h5>
+            </th>
+            <th>
+                <h5 style="font-weight: bold; text-align: center;">Вкупно</h5>
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.products)
+        {
+        <tr style="padding:10px 0;">
+            <td>
+                <img style="height: 100px; width: 100px; display: block; margin-left: auto; margin-right: auto; width: 50%; " src="@item.productImageOne" />
+            </td>
+            <td>
+                <h5 style="font-weight:bold;text-align:center;">@item.productDescription</h5>
+            </td>
+            <td>
+                <h5 style="font-weight: bold; text-align: center;">@item.productBrand</h5>
+            </td>
+            @if (item.productCategory == "shoes")
+            {
+                <td>
+                    <h5 style="font-weight: bold; text-align: center;">Патики</h5>
+                </td>
+
+            }
+            else if (item.productCategory == "clothes")
+            {
+                <td>
+                    <h5 style="font-weight: bold; text-align: center;">Облека</h5>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <h5 style="font-weight: bold; text-align: center;">Опрема</h5>
+                </td>
+            }
+
+            @if (item.discountPrice != null)
+            {
+                <td>
+                    <h5 style="font-weight: bold; text-align: center;">@item.discountPrice ден.</h5>
+                    @{totalPrice = totalPrice + item.discountPrice.AsInt();}
+
+                </td>
+            }
+            else
+            {
+                <td>
+                    <h5 style="font-weight: bold; text-align: center;">@item.productPrice ден.</h5>
+                    <h5>@{totalPrice = totalPrice + item.productPrice.AsInt();}</h5>
+                </td>
+            }
+            <td>
+                <button button-data="@item.ID" class="btn btn-default jsdelete" style="font-weight:bold">Избриши</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+<div>
+    @if (totalPrice != 0)
+    {
+    <div style="display: flex; justify-content: right;">
+        <h5 style="font-weight:bold; text-align: center; border: 1px solid lightgray; padding: 20px;">Вкупо:</h5>
+        <h5 style="font-weight: bold; text-align: center; color: darkred; border: 1px solid lightgray; padding: 20px; ">@totalPrice ден.</h5>
+    </div>  
+    }
+    else
+    {
+    <div style="display: flex; justify-content: right;">
+        <h5 style="font-weight: bold; text-align: center; border: 1px solid lightgray; padding: 20px; ">Вкупо:</h5>
+        <h5 style="font-weight: bold; text-align: center; color: darkred; border: 1px solid lightgray; padding: 20px; ">0ден.</h5>
+    </div>
+    }
+
+</div>
+
+<div style="display: flex; justify-content: right;">
+    <a href="/Home"><button style="background-color: darkred; font-weight: bold; color: white; border: 1px solid black; margin: 5px;" type="submit" class="btn btn-default">ПРОДОЛЖИ СО ПАЗАРЕЊЕ</button></a>
+</div>
+<div style="display: flex; justify-content: right;">
+    @if (totalPrice == 0)
+    {
+        <button style="background-color: darkred; font-weight: bold; color: white; border: 1px solid black; margin: 5px; " type="button" disabled class="btn btn-default">НАПЛАТА</button>
+    }
+    else
+    {
+        <a href="/ShoppingCarts/Confirm/@Model.ID"><button style="background-color: darkred; font-weight: bold; color: white; border: 1px solid black; margin: 5px; " type="button" class="btn btn-default">НАПЛАТА</button></a>
+    }
+    
+</div>
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            var table = $("#shoppingCart").DataTable();
+            $("#shoppingCart .jsdelete").on("click", function () {
+                var button = $(this);
+                bootbox.confirm("Дали сте сигурни дека сакате да го отстраните овој продукт", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/ShoppingCarts/Delete/" + button.attr("button-data"),
+                            method: "GET",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                                location.reload();
+                            },
+                            error: function (err) {
+                                console.log(err);
+                            }
+                        })
+                    }
+                })
+            })
+        })
+
+    </script>
+
+}

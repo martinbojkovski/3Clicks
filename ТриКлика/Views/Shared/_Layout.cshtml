@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/MainLayout.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="row" style="background-color: darkred; margin-bottom: 40px; padding-top: 20px; text-align: center; width: 100%;">
+            <div class="col-md-9 col-sm-9 col-xs-9" >
+                <div >
+                    <span style="color:white;font-weight:bold;">КОНТАКТ ЦЕНТАР / 078-276-788 / 071-234-615 / ПОН-САБОТА 9:00 - 17:00</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                {
+                <div>
+                    <span style="color:white;font-weight:bold;">Добредојдовте @User.Identity.Name</span>
+                    <span><a href="/Account/Login" style="color:white;font-weight:bold;">Промена на профил</a></span>
+                </div>
+                }
+                else 
+                {
+                <div>
+                    <span style="color:white;font-weight:bold;"><a href="/Account/Login" style="color:white;font-weight:bold;">Најави се</a> | <a href="/Account/Register" style="color:white;font-weight:bold;">Регистрирај се</a></span>
+                </div> 
+                } 
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="logo">
+                    <h1>
+                        <a href="/Home"><img style="height:150px;width:100px;" src="~/Images/3-clicks.png" /></h1></a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="account">
+
+                    <div class="olContent f1"></div>
+                    <div class="olSearch fr">
+                        <input type="text" placeholder="Пребарувај производи ..." name="searchKey" class="inputComn houseText form-control" />
+                        <div class="searchIcon">
+                            <button type="button" class="searchBtn" style="background-color:darkred;">
+                                <img style="height:20px;width:20px;" src="~/Images/search-icon-png-5.png" />
+                            </button>
+                        </div>
+                        <div class="contacts">
+                            <a href="/ShoppingCarts/Details/1"><img style="height:40px;width:40px;" src="~/Images/bag.png" /></a>
+                            <a href="/Home/Contact"><img style="height:40px;width:40px;" src="~/Images/office-phone-icon--25.png" /></a>
+                            <a href="https://www.facebook.com/bojkovski.23/"><img style="height:40px;width:40px;" src="~/Images/flogo-RGB-HEX-Blk-58.png" /></a>
+                            <a href="https://www.instagram.com/martinbojkovski/"><img style="height:40px;width:40px;" src="~/Images/glyph-logo_May2016-150x150.png" /></a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+
+            <div class="dropdown">
+                <a href="/Products/Males"><button class="dropbtn">Mажи</button></a>
+                <div class="dropdown-content">
+                    <a href="/Products/MaleShoes">Обувки</a>
+                    <a href="/Products/MaleClothes">Облека</a>
+                    <a href="/Products/MaleAccesories">Oпрема</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="/Products/Females"><button class="dropbtn">Жени</button></a>
+                <div class="dropdown-content">
+                    <a href="/Products/FemaleShoes">Обувки</a>
+                    <a href="/Products/FemaleClothes">Облека</a>
+                    <a href="/Products/FemaleAccesories">Oпрема</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="/Products/Kids"><button class="dropbtn">Деца</button></a>
+                <div class="dropdown-content">
+                    <a href="/Products/KidShoes">Обувки</a>
+                    <a href="/Products/KidClothes">Облека</a>
+                    <a href="/Products/KidAccesories">Oпрема</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="/Home/Brands"><button class="dropbtn">Брендови</button></a>
+                <div class="dropdown-content">
+                    <a href="/Products/Nike">Nike</a>
+                    <a href="/Products/Adidas">Addidas</a>
+                    <a href="/Products/Puma">Puma</a>
+                </div>
+            </div>
+
+            <div class="dropdownlink dropdown">
+                <a href="/Products/NewCollection">Нова Колекција</a>
+                <a href="/Products/Popular">Популарно</a>
+                <a href="/Products/Discount">% ПОПУСТИ %</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a href="/Products/">СИТЕ ПРОДУКТИ</a> 
+                }     
+            </div>
+            <hr />
+            @RenderBody()
+            <hr />
+            <footer>
+                <div class="row">
+                    <div style="background-color:#1D1D1D" class="col-md-12 footer">
+                        <div class="footer">
+                            <div class="col-md-4 col-sm-4 ">
+                                <div class="footer-left logo">
+                                    <img style="height: 100px; width: 50px; display: block; margin-left: auto; margin-right: auto; margin-top:20px; margin-bottom:20px;" src="~/Images/3-clicksWhitre3.png" />
+                                    <h6 style="color: dimgray; font-weight: bold;">АДРЕСА: ул.526, бр.20, Северна Македонија, Куманово</h6>
+                                    <h6 style="color: dimgray; font-weight: bold;">ТЕЛЕФОН: 078-276-788 // 071-234-615</h6>
+                                    <h6 style="color: dimgray; font-weight: bold;">Е-МАИЛ: martin.bojkovski.2002@gmail.com</h6>
+                                </div>
+                            </div>
+
+                            <div style="float:left;" class="col-md-4 col-sm-4 ">
+                                <div style="padding-bottom:15px;" class="footer-middle">
+                                    <h4 style="color: lightgray; font-weight: bold; padding-top: 20px;">Информации</h4>
+                                    <h6 style="padding-top: 5px; font-weight: bold;"><a style="color: dimgray;" href="/Home/Refund">Замена и Рефундација</a></h6>
+                                    <h6 style="padding-top: 5px; font-weight: bold;"><a style="color: dimgray;" href="/Home/Reclamation">Рекламација</a></h6>
+                                    <h6 style="padding-top: 5px; font-weight: bold;"><a style="color: dimgray;" href="/Home/FAQ">Најчесто поставувани прашања</a></h6>
+                                    <h6 style="padding-top: 5px; font-weight: bold;"><a style="color: dimgray;" href="/Home/Privacy">Политики на приватност</a></h6>
+                                </div>
+                            </div>
+
+                            <div style="float:left;" class="col-md-4 col-sm-4 footer-right">
+                                <h4 style="color:lightgray;font-weight:bold;padding-top:20px;">ТриКлика</h4>
+                                <div style="padding-bottom:15px;" class="footer-right">
+                                    <h6 style="padding-top: 5px; font-weight: bold;"><a style="color: dimgray;" href="/Home/AboutUs">За Нас</a></h6>
+                                    <h6 style="padding-top: 5px; font-weight: bold;"><a style="color: dimgray;" href="/Home/Contact">Контакт</a></h6>
+                                    <h6 style="padding-top: 5px; font-weight: bold;"><a style="color: dimgray;" href="/Account/Register">Регистрирај се</a></h6>
+                                    <h6 style="padding-top: 5px; font-weight: bold;"><a style="color: dimgray;;" href="/Account/Login">Најави се</a></h6>
+
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

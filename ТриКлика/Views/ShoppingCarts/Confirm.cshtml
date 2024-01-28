@@ -1,0 +1,64 @@
+﻿@model ТриКлика.Models.ShoppingCart
+@{
+    ViewBag.Title = "ClearCart";
+}
+
+@using (Html.BeginForm("Confirm", "ShoppingCarts"))
+{
+<div>
+
+    <div class="col-md-6 col-sm-6 col-xs-6">
+
+        <h2>Информации</h2>
+
+        <hr />
+
+        <form>
+            <label for="fname">Име:</label><br>
+            <input type="text" id="fname" name="fname" value="" style="width: 50%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required><br>
+            <label for="lname">Презиме:</label><br>
+            <input type="text" id="lname" name="lname" value="" style="width: 50%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required><br>
+            <label for="email">Емаил Адреса:</label><br>
+            <input type="text" id="email" name="email" value="" placeholder="пр. martin.bojkovski@gmail.com" style="width: 50%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required><br>
+            <label for="city">Град:</label><br>
+            <input type="text" id="city" name="city" value="" style="width: 50%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required><br>
+            <label for="adress">Адреса на живеење:</label><br>
+            <input type="text" id="adress" name="adress" value="" style="width: 50%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required><br>
+            <label for="number">Телефонски број:</label><br>
+            <input type="text" id="number" name="number" value="" placeholder="пр. 078276788" style="width: 50%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required pattern="^07\d{7}$"><br>
+        </form>
+
+
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <h2 style="margin:10px;">Начин на плаќање</h2>
+
+        <hr />
+        <div style="background-color:lightgray;border: 2px solid darkred; padding:10px;padding-bottom:100px;">
+            <from>
+                <input type="radio" id="cash" name="pay" value="cash">
+                <label for="cash" style="font-weight:bold;font-size:18px;">Плати при достава</label><br>
+                <h5 style="padding-left: 15px; margin: 10px; font-weight: bold;">Плаќањето ќе го извршите на лицето кое ќе ви го достави пакетот на вашата адреса</h5>
+                <input type="radio" id="card" name="pay" value="card" disabled>
+                <label for="card" style="font-weight: bold; font-size: 18px;">Плати со електронска картичка</label><br>
+                <h5 style="padding-left:15px;margin:10px;font-weight:bold;">Плаќањето ќе го извршите преку електронска картичка од банка<br />
+                <span style="color:darkred;font-size:16px;">(Електронксото плаќање во моментот не е достапно)</span></h5>
+            </from>
+
+            <hr />
+
+            <form>
+                <input type="checkbox" name="privacy" value="privacy" required="required">
+                <label for="privacy"> Се согласувам со <a href="/Home/Privacy" style="color:darkred;">Политики на Приватност</a> на 3Клика и ги почитувам</label><br>
+            </form>
+        </div>
+
+
+    </div>
+
+    <button style="background-color: darkred; font-weight: bold; color: white; border: 1px solid black; margin: 20px;float:right;" type="submit" class="btn btn-default">НАРАЧАЈ</button>
+</div>
+
+}
+

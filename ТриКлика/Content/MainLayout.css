@@ -1,0 +1,538 @@
+﻿/*[1. IMPORT SOURCE]*/
+@import url(font-awesome.css);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
+
+body {
+    padding-bottom: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333;
+    background: #fff;
+    overflow-x: hidden;
+    scrollbar-face-color: #121212;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.dropdownlink a {
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+
+}
+
+    .dropdownlink a:hover {
+        background-color: darkred;
+    }
+
+/* Dropdown Button */
+.dropbtn {
+    font-weight:bold;
+    background-color: white;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: darkred;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        font-weight: bold;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: white;
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: darkred;
+}
+
+/*DROPDOWN FOR SIZE OF SHOES*/
+select {
+    /* Reset Select */
+    appearance: none;
+    outline: 10px red;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    padding: 0 1em;
+    color: black;
+    background-color: lightgray;
+    cursor: pointer;
+}
+    /* Remove IE arrow */
+    select::-ms-expand {
+        display: none;
+    }
+/* Custom Select wrapper */
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+    font-weight:bold;
+}
+    /* Arrow */
+    .select::after {
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1em;
+        background-color: darkgray;
+        transition: .25s all ease;
+        pointer-events: none;
+    }
+    /* Transition */
+    .select:hover::after {
+        color: darkred;
+    }
+
+/*HEADER*/
+.header {
+    background-color:darkred;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    text-align:center;
+    width:100%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+/*ZACUVAJ VO KOSHNICKA*/
+.button-shopping button {
+    background-color: #1B1212;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-top: 30px;
+    border-radius: 24px;
+}
+
+ .button-shopping:hover button {
+    background:darkred;
+}
+
+.sticky {
+    margin-bottom: 8px;
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+
+.brand-image {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 1px solid black;
+    padding: 25px;
+    opacity: 0.5;
+    transition: .5s ease;
+}
+
+.brand-image:hover {
+    opacity: 1;
+    background-color: lightgray;
+    transition: .5s ease;
+    border: 1px outset darkgrey;
+    box-shadow: 2px 2px 14px;
+}
+
+.thumbnail:hover {
+    opacity: 0,5;
+    transition: .5s ease;
+    box-shadow: 2px 2px 14px;
+}
+.thumbnail .img-responsive:hover {
+    opacity: 0.5;
+    transition: .5s ease;
+}
+
+
+/*[3. LOGO]*/
+.logo {
+    margin-bottom: 40px;
+}
+    .logo img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .logo h1,
+    .logo h2 {
+        margin: 5px 0 5px;
+        text-align: center;
+        font-size: 32px;
+        line-height: 34px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+    }
+
+        .logo h1 span,
+        .logo h2 span {
+            font-weight: 300;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        .logo h1 img,
+        .logo h2 img {
+            color: #333;
+            text-decoration: none;
+            -webkit-transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+            -moz-transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+            -ms-transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+            -o-transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+            transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+        }
+
+            .logo h1 a:hover,
+            .logo h2 a:hover {
+                color: #888;
+                text-decoration: underline;
+            }
+
+
+.account {
+    text-align: right;
+}
+
+    .account a {
+        color: #333;
+        text-decoration: none;
+    }
+
+        .account a:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+
+    .account .contacts {
+        padding-top: 40px;
+        margin: 15px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .account .contacts img {
+        padding: 5px;
+        margin-left: 5px;
+    }
+
+/*[4. NAV MENU]*/
+
+
+.nav-menus {
+    border-top: 2px solid #333;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+    .nav-menus .nav-pills > li > a {
+        background: transparent;
+        color: #333;
+    }
+
+        .nav-menus .nav-pills > li > a:hover {
+            background: #eaeaea;
+            color: #333;
+        }
+
+    .nav-menus .nav-pills > .active > a,
+    .nav-menus .nav-pills > .active > a:hover,
+    .nav-menus .nav-pills > .active > a:focus {
+        background: #333;
+        color: #fff;
+    }
+
+/*CAROUSEL*/
+.main-text {
+    position: absolute;
+    top: 100px;
+    width: 96.66666666666666%;
+    color: #FFF;
+}
+
+.carousel-btns {
+    margin-top: 2em;
+}
+
+    .carousel-btns .btn {
+        width: 150px;
+    }
+
+.carousel-inner .imgOverlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6, 28, 38, 0.5);
+}
+
+.carousel-inner img {
+    width: 100%;
+}
+
+/*CONTROL*/
+.carousel-control {
+    width: auto;
+}
+
+    .carousel-control .icon-prev,
+    .carousel-control .icon-next,
+    .carousel-control .fa-chevron-left,
+    .carousel-control .fa-chevron-right {
+        position: absolute;
+        top: 47%;
+        right: 0;
+        z-index: 5;
+        display: inline-block;
+        background-color: #000;
+        width: 38px;
+        height: 38px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+
+    .carousel-control .icon-prev,
+    .carousel-control .fa-chevron-left {
+        left: 0;
+    }
+
+.carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    margin: 0 1px;
+    border: 2px solid #fff;
+    opacity: .8;
+}
+
+.carousel-indicators .active {
+    background-color: #28ace2;
+    border-color: #28ace2;
+}
+
+.carousel-control .icon-prev, .carousel-control .fa-chevron-left,
+.carousel-control .icon-right, .carousel-control .fa-chevron-right {
+    border-radius: 50px;
+}
+
+.copyright {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+}
+
+    .copyright .copyright-left {
+        text-align: left;
+    }
+
+.carousel-control .icon-prev, .carousel-control .fa-chevron-left {
+    left: 30px;
+}
+
+.carousel-control .icon-right, .carousel-control .fa-chevron-right {
+    right: 30px;
+}
+
+
+.olContent {
+    width: 100%;
+}
+
+    .olContent h2 {
+        color: #fff;
+        font-size: 19px;
+        padding: 9px 0 0;
+    }
+
+.olSearch {
+    width: 100%;
+}
+
+    .olSearch .inputComn {
+        margin-bottom: 0;
+    }
+
+.inputComn {
+    color: black;
+    font-size: 14px;
+    height: 44px;
+    width: 100%;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.searchBtn {
+    background-color: #005faa;
+    border: 0 none;
+    color: #fff;
+    font-size: 16px;
+    padding: 11px 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    height: 44px;
+}
+
+    .searchBtn:hover {
+        background-color: #326987;
+    }
+
+.olSearch {
+    position: relative;
+}
+
+.content {
+}
+
+    .content .page-header {
+        padding-bottom: 5px;
+        margin: 20px 0 30px;
+        border-bottom: 1px solid #eee;
+    }
+
+        .content .page-header h2 {
+            font-weight: 700;
+        }
+
+
+.product-item {
+    position: relative;
+}
+
+    .product-item .caption h5 {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        border-top: 2px solid #333;
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    .product-item .caption .product-item-price {
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 400;
+    }
+
+
+    .product-item .product-item-badge {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        padding: 5px 12px 6px;
+        color: #fff;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: 600;
+        background: #333;
+        -webkit-border-radius: 4px 0 4px 0;
+        -moz-border-radius: 4px 0 4px 0;
+        -o-border-radius: 4px 0 4px 0;
+        border-radius: 4px 0 4px 0;
+    }
+
+.copyright .copyright-right {
+    text-align: right;
+}
+
+.copyright .list-social {
+    float: right;
+    margin-top: -10px;
+}
+
+    .copyright .list-social > li {
+        display: inline;
+        float: left;
+        margin: 2px 5px;
+    }
+
+        .copyright .list-social > li > a {
+            display: block;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #ccc;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            -o-border-radius: 100%;
+            border-radius: 100%;
+            font-size: 20px;
+            color: #333333;
+        }
+
+            .copyright .list-social > li > a:hover {
+                background: #333333;
+                border: 1px solid #333333;
+                font-size: 20px;
+                color: #ffffff;
+            }
+
+            .copyright .list-social > li > a .fa {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -8px;
+                margin-top: -9px;
+            }

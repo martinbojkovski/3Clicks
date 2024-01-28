@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="themeSlider" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#themeSlider" data-slide-to="1"></li>
+        <li data-target="#themeSlider" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="imgOverlay"></div>
+            <img style="height:400px;width:100%" src="~/Images/NewCollection.jpg" alt="First slide">
+            <div class="carousel-caption">
+
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:400px;width:100%" src="~/Images/MostPopular.jpg" alt="Second slide">
+            <div class="carousel-caption">
+
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:400px;width:100%" src="~/Images/OnSale.jpg" alt="Third slide">
+            <div class="carousel-caption">
+
+
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+        <span class="fa fa-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#themeSlider" data-slide="next">
+        <span class="fa fa-chevron-right"></span>
+    </a>
+
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2 style="text-align:center;font-weight:bold;">ПРЕПОРАЧУВАМЕ</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row product-container">
+
+    @{ int counter = 0;}
+
+    @foreach (var item in ViewBag.Products)
+    {
+        if (counter == 4)
+        {
+            break;
+        }
+        else if (item.productDescription == "Популарно" || item.productDescription == "Ново")
+        {
+            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+                <div class="thumbnail product-item" style="height:300px">
+                    <a href="/Products/Details/@item.ID">
+                        <img class="img-responsive" title="Click to View Product detail"
+                             style="cursor:pointer;height:160px;width:100%"
+                             src="@item.productImageOne" />
+                    </a>
+
+                    <div class="caption">
+                        <h5>@item.productBrand - @item.productName</h5>
+                        @if (item.productDescription == "Попуст" && item.discountPrice != null)
+                        {
+                            <p style="color:red;font-weight:bold;"><span style="text-decoration:line-through;color:grey">@item.productPrice ден.</span>   @item.discountPrice ден.</p>
+                            <p>Последни броеви</p>
+                            <div class="product-item-badge" style="background-color:red;">@item.productDescription</div>
+                        }
+                        else
+                        {
+                            <p style="font-weight:bold;">@item.productPrice ден.</p>
+                            <p>Достапно</p>
+
+                            <div class="product-item-badge">@item.productDescription</div>
+                        }
+                    </div>
+                </div>
+            </div>
+            counter++;
+        }
+
+    }
+
+</div>
+
+<hr />
+<div class="middle-segmenet" >
+    <div class="col-md-4 col-sm-4 col-xs-4" style="display:flex;justify-content:center;">
+        <a href="/Products/Males"><img src="~/Images/Men.jpg" /></a>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-4" style="display:flex;justify-content:center;">
+        <a href="/Products/Females"><img src="~/Images/Women.jpg" /></a>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-4" style="display:flex;justify-content:center;">
+        <a href="/Products/Kids"><img src="~/Images/Kids.jpg" /></a>
+    </div>
+</div>
+<hr />
+
+<div>
+    <hr />
+    <a href="/Products/Details/14"><img style="width:100%;padding:50px;" src="~/Images/NIKE-BANNERS-1920X696-2-1.jpg" /></a>
+    <hr />
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2 style="text-align:center;font-weight:bold;">РАСПРОДАЖБА</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="row product-container">
+
+    @{ counter = 0;}
+
+    @foreach (var item in ViewBag.Products)
+    {
+        if (counter == 4)
+        {
+            break;
+        }
+        else if (item.productDescription == "Попуст")
+        {
+            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+                <div class="thumbnail product-item" style="height:300px">
+                    <a href="/Products/Details/@item.ID">
+                        <img class="img-responsive" title="Click to View Product detail"
+                             style="cursor:pointer;height:160px;width:100%"
+                             src="@item.productImageOne" />
+                    </a>
+
+                    <div class="caption">
+                        <h5>@item.productBrand - @item.productName</h5>
+                        @if (item.productDescription == "Попуст" && item.discountPrice != null)
+                        {
+                            <p style="color:red;font-weight:bold;"><span style="text-decoration:line-through;color:grey">@item.productPrice ден.</span>   @item.discountPrice ден.</p>
+                            <p>Последни броеви</p>
+                            <div class="product-item-badge" style="background-color:red;">@item.productDescription</div>
+                        }
+                        else
+                        {
+                            <p style="font-weight:bold;">@item.productPrice ден.</p>
+                            <p>Достапно</p>
+
+                            <div class="product-item-badge">@item.productDescription</div>
+                        }
+                    </div>
+                </div>
+            </div>
+            counter++;
+        }
+
+    }
+
+</div>
